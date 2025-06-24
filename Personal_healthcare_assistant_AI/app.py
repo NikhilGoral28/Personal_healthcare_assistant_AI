@@ -27,7 +27,7 @@ with open('E:\Personal_healthcare_assistant_AI\Personal_healthcare_assistant_AI\
 symptom_index = pickle.load(open('E:\Personal_healthcare_assistant_AI\Personal_healthcare_assistant_AI\models/symptom_index.pkl','rb'))
 
 
-# 2. Function to predict disease from symptoms
+# Function to predict disease from symptoms
 
 def get_predicted_value(patient_symptoms):
     input_vector = np.zeros(len(symptom_index))
@@ -78,9 +78,9 @@ app.secret_key = '0dfe4c2b0a58d1267c7f7344eaf649ad'
 
 # MySQL configuration
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'  # or your XAMPP MySQL username
-app.config['MYSQL_PASSWORD'] = ''  # your MySQL password
-app.config['MYSQL_DB'] = 'medicine_system'  # create this in phpMyAdmin
+app.config['MYSQL_USER'] = 'root'  
+app.config['MYSQL_PASSWORD'] = ''  
+app.config['MYSQL_DB'] = 'medicine_system'  
 
 mysql = MySQL(app)
 
@@ -119,7 +119,7 @@ def login():
         cur.close()
 
         if user:
-            stored_password = user[2]  # assuming password is in the third column
+            stored_password = user[2]  
             if check_password_hash(stored_password, password_input):
                 session['username'] = username
                 return render_template("home.html")
